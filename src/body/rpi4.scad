@@ -1,10 +1,12 @@
 $fn = 20;
 
 BaseBoard();
+translate([7, -1.5, baseBoardHeight]) UsbC();
 
+baseBoardHeight = 1.5;
 module BaseBoard() {
 	difference() {
-		cube([85, 56, 2]);
+		cube([85, 56, baseBoardHeight]);
 		Holes(3.5, 3.5);
 	}
 }
@@ -23,3 +25,7 @@ module Hole(x, y, z) {
 		cylinder(d=2.7, h=10);
 	}
 };
+
+module UsbC() {
+	cube([7, 6, 3.2-baseBoardHeight]);
+}
