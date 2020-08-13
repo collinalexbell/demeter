@@ -2,6 +2,8 @@ $fn = 20;
 
 BaseBoard();
 translate([7, -1.5, baseBoardHeight]) UsbC();
+translate([3.5 + 7.7 + 14.8 - HdmiMiniWidth/2, -1.5, baseBoardHeight]) HdmiMini();
+translate([3.5 + 7.7 + 14.8 + 13.5 - HdmiMiniWidth/2, -1.5, baseBoardHeight]) HdmiMini();
 
 baseBoardHeight = 1.5;
 module BaseBoard() {
@@ -28,4 +30,9 @@ module Hole(x, y, z) {
 
 module UsbC() {
 	cube([7, 6, 3.2-baseBoardHeight]);
+}
+
+HdmiMiniWidth = 5;
+module HdmiMini() {
+	cube([5, 6, 3.0-baseBoardHeight]);
 }
