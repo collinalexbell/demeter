@@ -1,8 +1,12 @@
 $fn = 20;
 
-difference() {
-	cube([85, 56, 2]);
-	Holes(3.5, 3.5);
+BaseBoard();
+
+module BaseBoard() {
+	difference() {
+		cube([85, 56, 2]);
+		Holes(3.5, 3.5);
+	}
 }
 
 module Holes(bottomLeftX, bottomLeftY) {
