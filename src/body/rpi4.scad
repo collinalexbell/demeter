@@ -6,6 +6,7 @@ translate([3.5 + 7.7 + 14.8 - HdmiMiniWidth/2, -1.5, baseBoardHeight]) HdmiMini(
 translate([3.5 + 7.7 + 14.8 + 13.5 - HdmiMiniWidth/2, -1.5, baseBoardHeight]) HdmiMini();
 translate([70, 9 - UsbADepth/2, baseBoardHeight]) UsbA();
 translate([70, 27 - UsbADepth/2, baseBoardHeight]) UsbA();
+translate([70, 45.7 - EthernetDepth/2, baseBoardHeight]) Ethernet();
 
 baseBoardHeight = 1.5;
 RPiColor = "Green";
@@ -45,4 +46,9 @@ module HdmiMini() {
 UsbADepth = 15;
 module UsbA() {
 	cube([20, UsbADepth, 16-baseBoardHeight]);
+}
+
+EthernetDepth = 16;
+module Ethernet() {
+	cube([20, EthernetDepth, 13.5-baseBoardHeight]);
 }
