@@ -1,1 +1,3 @@
 # Demeter
+
+A gardening robot.
