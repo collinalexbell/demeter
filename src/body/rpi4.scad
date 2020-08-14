@@ -24,8 +24,12 @@ translate([UsbAndEthernetOffset, 45.7 - EthernetDepth/2, baseBoardHeight]) Ether
 translate([3,HoleOffset+24.5-RibbonHeaderDepth/2, baseBoardHeight]) RibbonHeader();
 
 //GPIO
+GPIOHeight = 8.5;
+GPIODepth = 6;
+senseHatDepth = 28;
+
 translate([7, 49, baseBoardHeight]) GPIO();
-translate([0, 24.5 + GPIODepth, baseBoardHeight + GPIOHeight]) SenseHat();
+translate([0, 49+GPIODepth-senseHatDepth, baseBoardHeight + GPIOHeight]) SenseHat();
 
 baseBoardHeight = 1.5;
 RPiColor = "Green";
@@ -90,14 +94,24 @@ module Ethernet() {
 	cube([EthernetWidth, EthernetDepth, 13.5-baseBoardHeight]);
 }
 
-GPIOHeight = 8.5;
-GPIODepth = 6;
 module GPIO() {
-	cube([HoleDistance - 3.5*2, GPIODepth, GPIOHeight]);
+	color("black") cube([HoleDistance - 3.5*2, GPIODepth, GPIOHeight]);
 }
 
 module SenseHat() {
-	cube([UsbAndEthernetOffset-2, 24.5, baseBoardHeight]);
+	color("blue") cube([UsbAndEthernetOffset-2, senseHatDepth, baseBoardHeight]);
+	headerDepth = 8;
+	headerWidth = 10;
+	xOffset = 0.5;
+	translate([xOffset, senseHatDepth/2 - headerDepth/2, baseBoardHeight]) {
+		color("yellow") cube([headerWidth, headerDepth, 1]);
+		translate([0.5, 0.5]) color("grey") cube([headerWidth-1, headerDepth-1, 5]);
+	}
+	smallHeaderDepth = 2;
+	translate([headerWidth + xOffset ,0,baseBoardHeight]) {
+		color("yellow") cube([headerWidth, smallHeaderDepth, 1]);
+		translate([0.5, 0.5]) color("grey") cube([headerWidth-1, smallHeaderDepth-1, 5]);
+	}
 }
 
 sdDepth = 8;
